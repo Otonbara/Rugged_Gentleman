@@ -1,20 +1,34 @@
 "use client"
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaSearch } from "react-icons/fa";
 
 export default function SearchBar() {
     const [searchOpen, setSearchOpen] = useState(false);
+    const searchRef = useRef<HTMLDivElement>(null);
 
     const toggleSearchBar = () => {
         setSearchOpen(!searchOpen);
     };
 
+    const handleClickOutside = (event: MouseEvent) => {
+        if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+            setSearchOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
     return (
-        <div>
+        <div ref={searchRef}>
             <FaSearch 
                 className="text-white cursor-pointer" 
                 size={24} 
-                onClick={() => setSearchOpen(!searchOpen)} 
+                onClick={toggleSearchBar} 
             />
             {searchOpen && (
                 <div className="absolute top-24 left-0 p-4 -mt-3 w-full bg-zinc-600 flex justify-center">
