@@ -31,7 +31,7 @@ export default function SearchBar() {
                 onClick={toggleSearchBar} 
             />
             {searchOpen && (
-                <div className="absolute top-24 left-0 p-4 -mt-3 w-full bg-zinc-600 flex justify-center">
+                <div className="absolute top-24 left-0 p-4 -mt-3 w-full bg-zinc-600 flex justify-center z-50">
                     <input 
                         type="text" 
                         className="w-lvw h-10 rounded-md text-black font-bold text-lg"

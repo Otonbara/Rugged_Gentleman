@@ -15,7 +15,7 @@ export default function Navbar() {
     };
 
     return (
-        <nav className="bg-zinc-600">
+        <nav className="bg-zinc-600 z-50">
             <div className="container mx-auto px-4 py-4 flex justify-between items-center">
                 {/* Logo */}
                 <div>

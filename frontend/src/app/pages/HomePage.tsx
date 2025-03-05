@@ -1,13 +1,17 @@
 import Hero from "../components/Hero"
+import MatchingSet from "../components/MatchingSet"
+import NewArrivals from "../components/NewArrivals"
 
 export default function HomePage () {
     return (
         <div>
-            <Hero />
-            Matching Set Carousel<br/>
-            New Arrivals Carousel<br/>
+            <Hero/>
+            <NewArrivals/>
+            <MatchingSet/>
             Parallax<br/>
-            Footwear Carousel
+            Footwear Carousel<br/>
+            Brands<br/>
+            Testimonial<br/>
         </div>
     )
 }
