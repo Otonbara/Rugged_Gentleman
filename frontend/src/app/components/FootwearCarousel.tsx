@@ -14,87 +14,72 @@ import { FaCartShopping, FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 
 const products = [
     {
-        id: 1,
-        name: "Brown Corduroy Short Sleeve Shirt",
-        price: "₦50,000",
-        image: "/New_Arrivals/1.jpg",
+        id: 1, name: "Black Chelsea Boots", price: "₦58,000", image: "/Footwears/3.jpg",
     },
     {
         id: 2,
-        name: "Grey Linen Short Sleeve Shirt",
-        price: "₦50,000",
-        image: "/New_Arrivals/2.jpg",
+        name: "Brown Chelsea Boots",
+        price: "₦58,000",
+        image: "/Footwears/4.jpg",
     },
     {
         id: 3,
-        name: "Black Polo Short Sleeve T-Shirt",
-        price: "₦30,000",
-        image: "/New_Arrivals/3.jpg",
+        name: "Brown Prada Penny Loafers",
+        price: "₦45,000",
+        image: "/Footwears/1.jpg",
     },
     {
         id: 4,
-        name: "Black Formal Trousers",
-        price: "₦25,000",
-        image: "/New_Arrivals/4.jpg",
+        name: "White Nike Airforce 1",
+        price: "₦70,000",
+        image: "/Footwears/5.jpg",
     },
     {
         id: 5,
-        name: "Blue Straight Jeans",
-        price: "₦28,000",
-        image: "/New_Arrivals/5.jpg",
+        name: "Biege Vans Cruze",
+        price: "₦60,000",
+        image: "/Footwears/15.jpg",
     },
     {
         id: 6,
-        name: "Navy Blue Formal Trouser",
-        price: "₦25,000",
-        image: "/New_Arrivals/6.jpg",
+        name: "Black Vans Old Skool",
+        price: "₦55,000",
+        image: "/Footwears/6.jpg",
     },
     {
         id: 7,
-        name: "Jordan Sweatpants",
-        price: "₦15,000",
-        image: "/New_Arrivals/7.jpg",
+        name: "Blue Suede Adidas Samba",
+        price: "₦70,000",
+        image: "/Footwears/7.jpg",
     },
     {
         id: 8,
-        name: "Black Monkstrap Shoe",
-        price: "₦55,000",
-        image: "/New_Arrivals/8.jpg",
+        name: "Nike Airmax '00",
+        price: "₦67,000",
+        image: "/Footwears/16.jpg",
     },
     {
         id: 9,
-        name: "Nike Air Jordan 1 Black/White & Green",
+        name: "All-Star Converse High",
         price: "₦60,000",
-        image: "/New_Arrivals/9.jpg",
+        image: "/Footwears/12.jpg",
     },
     {
         id: 10,
-        name: "Black Chelsea Boots",
-        price: "₦58,000",
-        image: "/New_Arrivals/10.jpg",
+        name: "Black Crocs Clogs",
+        price: "₦38,000",
+        image: "/Footwears/18.jpg",
     },
 ]
 
-export default function NewArrivals () {
+export default function FootwearCarousel () {
     const swiperRef = useRef(null);
 
     return (
-        <section className="mx-auto px-4 py-6 bg-zinc-200">
-            <h2 className="text-4xl font-bold text-center mb-4"><span className='text-slate-600'>NEW</span> ARRIVALS</h2>
+        <section className="mx-auto px-4 py-6 bg-slate-200">
+            <h2 className="text-4xl font-bold text-center mb-4"><span className='text-slate-600'>TRENDING</span> FOOTWEARS</h2>
             <div className="container mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center items-center mb-8">
-                    {/* Image */}
-                    <div className="relative w-full h-[300px] md:h-full">
-                        <Image
-                         src="/newarrivals_banner.jpg"
-                            fill
-                            objectFit="contain"
-                            alt="New Arrivals Image"
-                            className="rounded-lg" />
-                        <div className='absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-black bg-opacity-50 rounded-lg'>
-                            <h2 className='text-3xl font-bold text-white'>GET<br/>THE<br/>LATEST WITH US</h2>
-                        </div>
-                    </div>
+                <div className="flex flex-col-reverse md:flex-row gap-6 justify-items-center items-center mb-8">
                     {/* Product Card Carousel */}
                     <Swiper
                         modules={[Navigation, Pagination, Autoplay]}
@@ -117,7 +102,7 @@ export default function NewArrivals () {
                                         <Image 
                                             src={product.image}
                                             alt={product.name}
-                                            fill
+                                            layout="fill"
                                             objectFit="fill"
                                             className="rounded-[4px]" />
                                     </div>
@@ -145,11 +130,22 @@ export default function NewArrivals () {
                             </button>
                         </div>
                     </Swiper>
+                    <div className="relative w-full h-[400px] md:h-[506]">
+                        <Image
+                            src="/footwear_banner.jpg"
+                            fill
+                            objectFit="contain"
+                            alt="New Arrivals Image"
+                            className="rounded-lg" />
+                        <div className='absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-black bg-opacity-50 rounded-lg'>
+                            <h2 className='text-3xl font-bold text-white'>WALK<br/>WITH<br/>CONFIDENCE</h2>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div className='flex justify-center'>
-                <Link href='/'>
-                    <Button label='SHOP NOW' onClick={() => console.log('Shop Now')} />
+            <div className="flex justify-center">
+                <Link href="/">
+                    <Button label="SHOP NOW" onClick={() => console.log('Shop Now')}/>
                 </Link>
             </div>
         </section>

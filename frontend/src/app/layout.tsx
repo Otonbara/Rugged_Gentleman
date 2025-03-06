@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anybody, Lato } from "next/font/google";
+import { Anybody, Lato, Satisfy } from "next/font/google";
 import "./globals.css";
 
 const anybody = Anybody({
@@ -11,6 +11,12 @@ const linksans = Lato({
   variable: "--font-lato",
   subsets: ["latin"],
   weight: ['100','300','400','700','900'],
+});
+
+const satisfy = Satisfy({
+  variable: "--font-satisfy",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -29,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${anybody.variable} ${linksans.variable} antialiased`}
+        className={`${anybody.variable} ${linksans.variable} ${satisfy.variable} antialiased`}
       >
         {children}
       </body>

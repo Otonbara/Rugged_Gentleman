@@ -13,6 +13,11 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        anybody: "var(--font-anybody)",
+        lato: "var(--font-lato)",
+        satisfy: "var(--font-satisfy)",
+      },
     },
   },
   darkMode: "class",
