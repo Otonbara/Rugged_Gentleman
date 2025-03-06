@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Anybody, Lato, Satisfy } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/NavBar";
+import Footer from "./components/Footer";
 
 const anybody = Anybody({
   variable: "--font-anybody",
@@ -37,7 +39,9 @@ export default function RootLayout({
       <body
         className={`${anybody.variable} ${linksans.variable} ${satisfy.variable} antialiased`}
       >
-        {children}
+        <Navbar />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
       </body>
     </html>
   );

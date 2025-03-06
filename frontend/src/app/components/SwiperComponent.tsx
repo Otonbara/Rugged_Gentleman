@@ -31,7 +31,7 @@ export default function SwiperComponent () {
                     <div className='absolute inset-0 flex flex-col items-center justify-center text-black p-6 text-center bg-black bg-opacity-20'>
                         <h2 className='text-5xl font-bold text-white'>RUGGED GENTLEMAN</h2>
                         <p className='mt-2 text-2xl font-bold text-white'>DRESS GOOD, FEEL GOOD</p>
-                        <Link href='/'>
+                        <Link href='/Tops'>
                             <Button label='SHOP NOW' onClick={() => console.log('Shop Now')} />
                         </Link>
                     </div>
@@ -47,7 +47,7 @@ export default function SwiperComponent () {
                     <div className='absolute inset-0 flex flex-col items-center justify-center text-black p-6 text-center bg-black bg-opacity-20'>
                         <h2 className='text-5xl font-bold text-white'>LUXURY & STYLE</h2>
                         <p className='mt-2 text-2xl font-bold text-white'>LET'S ENRICH YOUR AURA</p>
-                        <Link href='/'>
+                        <Link href='/Tops'>
                             <Button label='SHOP NOW' onClick={() => console.log('Shop Now')} />
                         </Link>
                     </div>
@@ -63,7 +63,7 @@ export default function SwiperComponent () {
                     <div className='absolute inset-0 flex flex-col items-center justify-center text-black p-6 text-center bg-black bg-opacity-20'>
                         <h2 className='text-5xl font-bold text-white'>SHOP THE COLLECTION</h2>
                         <p className='mt-2 text-2xl font-bold text-white'>DISCOVER THE LATEST TRENDS AND EXCLUSIVE DESIGNS</p>
-                        <Link href='/'>
+                        <Link href='/Tops'>
                             <Button label='SHOP NOW' onClick={() => console.log('Shop Now')} />
                         </Link>
                     </div>

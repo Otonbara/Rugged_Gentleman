@@ -84,11 +84,11 @@ export default function NewArrivals () {
             <div className="container mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center items-center mb-8">
                     {/* Image */}
-                    <div className="relative w-full h-[300px] md:h-full">
+                    <div className="relative w-full md:h-full sm:h-72">
                         <Image
                          src="/newarrivals_banner.jpg"
-                            fill
-                            objectFit="contain"
+                            layout="fill"
+                            objectFit="fill"
                             alt="New Arrivals Image"
                             className="rounded-lg" />
                         <div className='absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-black bg-opacity-50 rounded-lg'>
@@ -106,7 +106,7 @@ export default function NewArrivals () {
                         slidesPerView={1}
                         loop={true}
                         breakpoints={{
-                            768: { slidesPerView: 1 },
+                            640: { slidesPerView: 2 },
                             1024: { slidesPerView: 2 },
                         }}
                         className="w-full">
@@ -117,7 +117,7 @@ export default function NewArrivals () {
                                         <Image 
                                             src={product.image}
                                             alt={product.name}
-                                            fill
+                                            layout="fill"
                                             objectFit="fill"
                                             className="rounded-[4px]" />
                                     </div>
@@ -148,7 +148,7 @@ export default function NewArrivals () {
                 </div>
             </div>
             <div className='flex justify-center'>
-                <Link href='/'>
+                <Link href='/Tops'>
                     <Button label='SHOP NOW' onClick={() => console.log('Shop Now')} />
                 </Link>
             </div>

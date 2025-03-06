@@ -144,7 +144,7 @@ export default function FootwearCarousel () {
                 </div>
             </div>
             <div className="flex justify-center">
-                <Link href="/">
+                <Link href="/Footwears">
                     <Button label="SHOP NOW" onClick={() => console.log('Shop Now')}/>
                 </Link>
             </div>

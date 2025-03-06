@@ -65,7 +65,7 @@ export default function MatchingSet () {
                         </div>
             </Swiper>
             <div className='flex justify-center'>
-                <Link href='/'>
+                <Link href='/Tops'>
                     <Button label='SHOP NOW' onClick={() => console.log('Shop Now')} />
                 </Link>
             </div>
