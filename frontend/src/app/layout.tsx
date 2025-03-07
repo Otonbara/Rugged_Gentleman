@@ -40,7 +40,7 @@ export default function RootLayout({
         className={`${anybody.variable} ${linksans.variable} ${satisfy.variable} antialiased`}
       >
         <Navbar />
-        <main className="min-h-screen">{children}</main>
+        <main className="pt-20">{children}</main>
         <Footer />
       </body>
     </html>

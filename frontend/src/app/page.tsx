@@ -1,5 +1,3 @@
-import NavBar from "./components/NavBar"
-import Footer from "./components/Footer"
 import Hero from "./components/Hero"
 import NewArrivals from "./components/NewArrivals"
 import MatchingSet from "./components/MatchingSet"
@@ -10,7 +8,7 @@ import Testimonial from "./components/Testimonial"
 export default function Home() {
   return (
     <>
-      <main className="pt-16">
+      <main>
         <Hero/>
         <NewArrivals/>
         <MatchingSet/>

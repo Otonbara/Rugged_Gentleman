@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { FaUser, FaShoppingCart, FaTimes, FaBars } from "react-icons/fa";
+import SearchBar from "./SearchBar";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +40,7 @@ export default function Navbar() {
               <Link
                 href={item.path}
                 className={`text-white font-bold hover:text-slate-300 transition ${
-                  pathname === item.path ? "text-yellow-400 underline" : ""
+                  pathname === item.path ? "py-2 px-4 bg-gray-800 rounded-md" : ""
                 }`}
               >
                 {item.name}
@@ -50,6 +51,7 @@ export default function Navbar() {
 
         {/* Icons & Hamburger */}
         <div className="flex space-x-4">
+          <SearchBar/>
           <Link href="/">
             <FaUser className="text-white" size={24} />
           </Link>
