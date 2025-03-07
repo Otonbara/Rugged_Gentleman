@@ -130,7 +130,7 @@ export default function FootwearCarousel () {
                                         <Image 
                                             src={product.image}
                                             alt={product.name}
-                                            layout="fill"
+                                            fill
                                             objectFit="fill"
                                             className="rounded-[4px]" />
                                     </div>

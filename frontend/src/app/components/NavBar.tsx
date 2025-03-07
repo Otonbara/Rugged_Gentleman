@@ -52,10 +52,10 @@ export default function Navbar() {
         {/* Icons & Hamburger */}
         <div className="flex space-x-4">
           <SearchBar/>
-          <Link href="/">
+          <Link href="/Login">
             <FaUser className="text-white" size={24} />
           </Link>
-          <Link href="/">
+          <Link href="/Cart">
             <FaShoppingCart className="text-white" size={24} />
           </Link>
 
@@ -88,7 +88,7 @@ export default function Navbar() {
               <Link
                 href={item.path}
                 className={`text-white font-bold hover:text-slate-300 transition ${
-                  pathname === item.path ? "text-yellow-400 underline" : ""
+                  pathname === item.path ? "py-2 px-4 bg-gray-800 rounded-md" : ""
                 }`}
                 onClick={closeSidebar} // Close sidebar when link is clicked
               >

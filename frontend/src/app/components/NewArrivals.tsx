@@ -29,7 +29,7 @@ const products = [
     },
     {
         id: 3,
-        name: "Black Polo Short Sleeve T-Shirt",
+        name: "Black Short Sleeve T-Shirt W/Collar",
         price: "₦30,000",
         image: "/New_Arrivals/3.jpg",
         size: ["S", "M", "L", "XL", "2XL"],
@@ -43,7 +43,7 @@ const products = [
     },
     {
         id: 5,
-        name: "Blue Straight Jeans",
+        name: "Washed Blue Straight Jeans",
         price: "₦28,000",
         image: "/New_Arrivals/5.jpg",
         size: [30, 32, 34, 36, 38],
@@ -57,7 +57,7 @@ const products = [
     },
     {
         id: 7,
-        name: "Jordan Sweatpants",
+        name: "Black Jordan Sweatpants",
         price: "₦15,000",
         image: "/New_Arrivals/7.jpg",
         size: ["S", "M", "L", "XL", "2XL"],
@@ -131,7 +131,7 @@ export default function NewArrivals () {
                         slidesPerView={1}
                         loop={true}
                         breakpoints={{
-                            640: { slidesPerView: 2 },
+                            768: { slidesPerView: 1 },
                             1024: { slidesPerView: 2 },
                         }}
                         className="w-full">
