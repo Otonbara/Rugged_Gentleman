@@ -5,7 +5,15 @@ import { FaCartShopping, FaDollarSign } from "react-icons/fa6";
 import { useCart } from "../context/CartContext";
 import { useRouter } from "next/navigation";
 
-export default function AccessoriesProductCard({ product }) {
+interface Product {
+    id: number;
+    name: string;
+    price: number;
+    image: string;
+    quantity: number;
+}
+
+export default function AccessoriesProductCard({ product }: { product: Product }) {
     const { addToCart } = useCart();
     const router = useRouter();
 
@@ -33,9 +41,10 @@ export default function AccessoriesProductCard({ product }) {
 
             {/* Add to Cart & Buy Now Buttons */}
             <div className="flex justify-center items-center gap-2 mt-4">
-                <button 
+                <button
                     className="flex items-center gap-1 px-3 py-1 rounded-md text-sm bg-gray-800 text-white hover:bg-gray-600 transition"
-                    onClick={() => addToCart(product)}>
+                    onClick={() => addToCart({ ...product, id: product.id, quantity: 1 })}
+                >
                     Add to Cart
                     <FaCartShopping />
                 </button>

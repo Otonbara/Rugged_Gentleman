@@ -6,12 +6,24 @@ import { useState } from "react";
 import { useCart } from "../context/CartContext";
 import { useRouter } from "next/navigation";
 
-export default function ProductCard({ product }) {
-    const [selectedSize, setSelectedSize] = useState(null);
+interface Product {
+    id: number;
+    name: string;
+    price: number;
+    image: string;
+    size: (number | string)[];
+}
+
+export default function ProductCard({ product }: { product: Product }) {
+    const [selectedSize, setSelectedSize] = useState<string | null>(null);
     const router = useRouter();
     const { addToCart } = useCart();
 
-    const handleSizeSelect = (size) => {
+    interface SizeSelectHandler {
+        (size: string): void;
+    }
+
+    const handleSizeSelect: SizeSelectHandler = (size) => {
         setSelectedSize(size);
     };
 
@@ -32,7 +44,7 @@ export default function ProductCard({ product }) {
         }
 
         // Add product to cart with selected size
-        addToCart({ ...product, size: selectedSize });
+        addToCart({ ...product, size: selectedSize, id: product.id, quantity: 1 });
     };
 
     return (
@@ -60,7 +72,7 @@ export default function ProductCard({ product }) {
                         className={`px-3 py-1 border rounded-md transition ${
                             selectedSize === size ? "bg-black text-white border-black" : "bg-gray-800 hover:bg-gray-600 text-white"
                         }`}
-                        onClick={() => handleSizeSelect(size)}
+                        onClick={() => handleSizeSelect(String(size))}
                     >
                         {size}
                     </button>

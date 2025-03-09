@@ -23,15 +23,22 @@ export default function Checkout() {
   const size = searchParams.get("size");
 
   // If coming from "Buy Now", create a single item list
-  const checkoutItems = name && price && image && size
-    ? [{ name, price, image, size, quantity: 1 }]
-    : cart; // Otherwise, use the cart
+  const checkoutItems =
+  name && price && image
+    ? [{ 
+        name, 
+        price: Number(price) || 0,  // Ensure valid number
+        image, 
+        size: size || "N/A", 
+        quantity: 1 
+      }]
+    : cart;
 
   // Calculate total price
   const total = checkoutItems.reduce((acc, item) => {
     const cleanPrice =
       typeof item.price === "string"
-        ? Number(item.price.replace(/[^\d.]/g, ""))
+        ? Number((item.price as string).replace(/[^\d.]/g, ""))
         : item.price || 0;
     return acc + cleanPrice * (item.quantity || 1);
   }, 0);
@@ -62,17 +69,21 @@ export default function Checkout() {
       <h1 className="text-2xl font-bold mb-4">Checkout</h1>
 
       {/* Display Items in Checkout */}
-      {checkoutItems.map((item, index) => (
-        <div key={index} className="flex items-center gap-4 bg-gray-100 p-4 rounded-md mb-4">
-          <Image src={item.image} alt={item.name} width={80} height={80} className="rounded-md" />
-          <div>
-            <h3 className="font-semibold">{item.name}</h3>
-            {item.size && <p className="text-gray-600">Size: {item.size}</p>}
-            <p className="text-gray-600">Quantity: {item.quantity}</p>
-            <p className="text-green-600 font-bold">{item.price}</p>
+      {checkoutItems.length === 0 ? (
+        <p className="text-center text-gray-600">No items to checkout.</p>
+      ) : (
+        checkoutItems.map((item, index) => (
+          <div key={index} className="flex items-center gap-4 bg-gray-100 p-4 rounded-md mb-4">
+            <Image src={item.image} alt={item.name} width={80} height={80} className="rounded-md" />
+            <div>
+              <h3 className="font-semibold">{item.name}</h3>
+              {item.size && <p className="text-gray-600">Size: {item.size}</p>}
+              <p className="text-gray-600">Quantity: {item.quantity}</p>
+              <p className="text-green-600 font-bold">₦{item.price.toLocaleString()}</p>
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      )}      
 
       <div className="p-4 bg-gray-100 rounded-md">
         <h2 className="text-lg font-semibold flex items-center gap-2">

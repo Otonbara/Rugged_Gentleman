@@ -18,70 +18,70 @@ const products = [
     {
         id: 1,
         name: "Black Chelsea Boots",
-        price: "₦58,000",
+        price: 58000,
         image: "/Footwears/3.jpg",
         size: [41, 42, 43, 44, 45],
     },
     {
         id: 2,
         name: "Brown Chelsea Boots",
-        price: "₦58,000",
+        price: 58000,
         image: "/Footwears/4.jpg",
         size: [41, 42, 43, 44, 45],
     },
     {
         id: 3,
         name: "Brown Prada Penny Loafers",
-        price: "₦45,000",
+        price: 45000,
         image: "/Footwears/1.jpg",
         size: [41, 42, 43, 44, 45],
     },
     {
         id: 4,
         name: "White Nike Airforce 1",
-        price: "₦70,000",
+        price: 70000,
         image: "/Footwears/5.jpg",
         size: [41, 42, 43, 44, 45],
     },
     {
         id: 5,
         name: "Biege Vans Cruze",
-        price: "₦60,000",
+        price: 60000,
         image: "/Footwears/15.jpg",
         size: [41, 42, 43, 44, 45],
     },
     {
         id: 6,
         name: "Black Vans Old Skool",
-        price: "₦55,000",
+        price: 55000,
         image: "/Footwears/6.jpg",
         size: [41, 42, 43, 44, 45],
     },
     {
         id: 7,
         name: "Blue Suede Adidas Samba",
-        price: "₦70,000",
+        price: 70000,
         image: "/Footwears/7.jpg",
         size: [41, 42, 43, 44, 45],
     },
     {
         id: 8,
         name: "Nike Airmax '00",
-        price: "₦67,000",
+        price: 67000,
         image: "/Footwears/16.jpg",
         size: [41, 42, 43, 44, 45],
     },
     {
         id: 9,
         name: "All-Star Converse High",
-        price: "₦60,000",
+        price: 60000,
         image: "/Footwears/12.jpg",
         size: [41, 42, 43, 44, 45],
     },
     {
         id: 10,
         name: "Black Crocs Clogs",
-        price: "₦38,000",
+        price: 38000,
         image: "/Footwears/18.jpg",
         size: [41, 42, 43, 44, 45],
     },
@@ -102,7 +102,7 @@ export default function FootwearCarousel () {
     };
 
     // Buy Now Function
-    const handleBuyNow = (product: { id: number; name: string; price: string; image: string; size: (string | number)[] }) => {
+    const handleBuyNow = (product: { id: number; name: string; price: number; image: string; size: (string | number)[] }) => {
         if (!selectedSizes[product.id]) return;
 
         router.push(
@@ -179,7 +179,7 @@ export default function FootwearCarousel () {
                                                     : "bg-gray-400 text-gray-200 cursor-not-allowed"
                                             }`}
                                             disabled={!selectedSizes[product.id]}
-                                            onClick={() => addToCart({ ...product, size: selectedSizes[product.id] })} // Pass selected size
+                                            onClick={() => addToCart({ ...product, size: String(selectedSizes[product.id]), quantity: 1 })} // Pass selected size and quantity
                                         >
                                             Add to Cart <FaCartShopping />
                                         </button>

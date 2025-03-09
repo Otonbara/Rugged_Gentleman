@@ -1,6 +1,7 @@
 "use client"
 
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper as SwiperInstance } from 'swiper';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -13,9 +14,10 @@ import { useState, useRef } from 'react';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 
 export default function MatchingSet () {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const swiperRef = useRef(null);
+    const swiperRef = useRef<SwiperInstance | null>(null);
     
+    const [activeIndex, setActiveIndex] = useState(0);
+
     return (
         <section className='mx-auto px-4 py-6 bg-slate-200'>
             <h2 className='text-4xl font-bold text-center mb-4'>MATCHING <span className='text-slate-600'>SETS</span></h2>

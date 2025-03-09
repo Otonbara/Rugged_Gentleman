@@ -18,70 +18,70 @@ export const products = [
     {
         id: 1,
         name: "Brown Corduroy Short Sleeve Shirt",
-        price: "₦50,000",
+        price: 50000,
         image: "/New_Arrivals/1.jpg",
         size: ["S", "M", "L", "XL", "2XL"],
     },
     {
         id: 2,
         name: "Grey Linen Short Sleeve Shirt",
-        price: "₦50,000",
+        price: 50000,
         image: "/New_Arrivals/2.jpg",
         size: ["S", "M", "L", "XL", "2XL"],
     },
     {
         id: 3,
         name: "Black Short Sleeve T-Shirt W/Collar",
-        price: "₦30,000",
+        price: 30000,
         image: "/New_Arrivals/3.jpg",
         size: ["S", "M", "L", "XL", "2XL"],
     },
     {
         id: 4,
         name: "Black Formal Trousers",
-        price: "₦25,000",
+        price: 25000,
         image: "/New_Arrivals/4.jpg",
         size: [30, 32, 34, 36, 38],
     },
     {
         id: 5,
         name: "Washed Blue Straight Jeans",
-        price: "₦28,000",
+        price: 28000,
         image: "/New_Arrivals/5.jpg",
         size: [30, 32, 34, 36, 38],
     },
     {
         id: 6,
         name: "Navy Blue Formal Trouser",
-        price: "₦25,000",
+        price: 25000,
         image: "/New_Arrivals/6.jpg",
         size: [30, 32, 34, 36, 38],
     },
     {
         id: 7,
         name: "Black Jordan Sweatpants",
-        price: "₦15,000",
+        price: 15000,
         image: "/New_Arrivals/7.jpg",
         size: ["S", "M", "L", "XL", "2XL"],
     },
     {
         id: 8,
         name: "Black Monkstrap Shoe",
-        price: "₦55,000",
+        price: 55000,
         image: "/New_Arrivals/8.jpg",
         size: [41, 42, 43, 44, 45],
     },
     {
         id: 9,
         name: "Nike Air Jordan 1 Black/White & Green",
-        price: "₦60,000",
+        price: 60000,
         image: "/New_Arrivals/9.jpg",
         size: [41, 42, 43, 44, 45],
     },
     {
         id: 10,
         name: "Black Chelsea Boots",
-        price: "₦58,000",
+        price: 58000,
         image: "/New_Arrivals/10.jpg",
         size: [41, 42, 43, 44, 45],
     },
@@ -102,7 +102,7 @@ export default function NewArrivals() {
     };
 
     // Buy Now Function
-    const handleBuyNow = (product: { id: number; name: string; price: string; image: string; size: (string | number)[] }) => {
+    const handleBuyNow = (product: { id: number; name: string; price: number; image: string; size: (string | number)[] }) => {
         if (!selectedSizes[product.id]) return;
 
         router.push(
@@ -197,7 +197,7 @@ export default function NewArrivals() {
                                                     : "bg-gray-400 text-gray-200 cursor-not-allowed"
                                             }`}
                                             disabled={!selectedSizes[product.id]}
-                                            onClick={() => addToCart({ ...product, size: selectedSizes[product.id] })} // Pass selected size
+                                            onClick={() => addToCart({ ...product, size: String(selectedSizes[product.id]), quantity: 1 })} // Pass selected size and quantity
                                         >
                                             Add to Cart <FaCartShopping />
                                         </button>
@@ -239,7 +239,7 @@ export default function NewArrivals() {
 
             <div className="flex justify-center">
                 <Link href="/Tops">
-                    <Button label="SHOP NOW" />
+                    <Button label="SHOP NOW" onClick={() => router.push('/Tops')} />
                 </Link>
             </div>
         </section>
