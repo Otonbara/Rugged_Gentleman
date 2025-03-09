@@ -29,7 +29,10 @@ export default function Checkout() {
 
   // Calculate total price
   const total = checkoutItems.reduce((acc, item) => {
-    const cleanPrice = Number(item.price.replace(/[^\d.]/g, "")) || 0;
+    const cleanPrice =
+      typeof item.price === "string"
+        ? Number(item.price.replace(/[^\d.]/g, ""))
+        : item.price || 0;
     return acc + cleanPrice * (item.quantity || 1);
   }, 0);
 
