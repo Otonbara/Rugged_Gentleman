@@ -2,7 +2,7 @@
 
 import { useCart } from "../context/CartContext";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaCreditCard, FaUniversity, FaMoneyBillWave, FaCheckCircle } from "react-icons/fa";
 import { ImSpinner2 } from "react-icons/im";
 import Image from "next/image";
@@ -16,23 +16,34 @@ export default function Checkout() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
 
-  // Check if coming from "Buy Now"
-  const name = searchParams.get("name");
-  const price = searchParams.get("price");
-  const image = searchParams.get("image");
-  const size = searchParams.get("size");
+  interface CheckoutItem {
+    name: string;
+    price: number;
+    image: string;
+    size: string;
+    quantity: number;
+  }
 
-  // If coming from "Buy Now", create a single item list
-  const checkoutItems =
-  name && price && image
-    ? [{ 
-        name, 
-        price: Number(price) || 0,  // Ensure valid number
-        image, 
-        size: size || "N/A", 
-        quantity: 1 
-      }]
-    : cart;
+  const [checkoutItem, setCheckoutItem] = useState<CheckoutItem | null>(null);
+
+  useEffect(() => {
+    const name = searchParams.get("name");
+    const price = searchParams.get("price");
+    const image = searchParams.get("image");
+    const size = searchParams.get("size");
+
+    if (name && price && image) {
+      setCheckoutItem({
+        name,
+        price: Number( price ) || 0,
+        image,
+        size: size || "N/A",
+        quantity: 1,
+      });
+    }
+  }, [searchParams]);
+
+  const checkoutItems = checkoutItem ? [checkoutItem] : cart;
 
   // Calculate total price
   const total = checkoutItems.reduce((acc, item) => {
