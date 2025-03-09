@@ -27,10 +27,11 @@ export default function Checkout() {
   const [checkoutItem, setCheckoutItem] = useState<CheckoutItem | null>(null);
 
   useEffect(() => {
-    const name = searchParams.get("name");
-    const price = searchParams.get("price");
-    const image = searchParams.get("image");
-    const size = searchParams.get("size");
+    if (typeof window === "undefined") return;
+      const name = searchParams.get("name");
+      const price = searchParams.get("price");
+      const image = searchParams.get("image");
+      const size = searchParams.get("size");
 
     if (name && price && image) {
       setCheckoutItem({
