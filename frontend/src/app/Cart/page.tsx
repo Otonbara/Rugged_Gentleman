@@ -15,7 +15,9 @@ export default function Cart() {
   // Fix NaN issue by ensuring price is a valid number
   const subtotal = cart.reduce((acc, item) => {
     // Remove ₦ and commas, then convert to a number
-    const cleanPrice = Number(String(item.price).replace(/[^\d.]/g, "")) || 0;
+  const cleanPrice = typeof item.price === "string"
+    ? Number((item.price as string).replace(/[^\d.]/g, ""))
+    : item.price || 0;
     return acc + cleanPrice * (item.quantity || 1);
   }, 0);
 
