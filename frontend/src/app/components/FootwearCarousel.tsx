@@ -146,7 +146,7 @@ export default function FootwearCarousel () {
                                         />
                                     </div>
                                     <h3 className="text-md font-semibold mt-4">{product.name}</h3>
-                                    <p className="text-gray-600">{product.price}</p>
+                                    <p className="text-gray-600">{product.price.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}</p>
 
                                     {/* Size Selection */}
                                     <div className="flex justify-center gap-1 mt-4 flex-wrap">

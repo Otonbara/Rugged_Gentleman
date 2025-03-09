@@ -37,7 +37,7 @@ export default function AccessoriesProductCard({ product }: { product: Product }
 
             {/* Product Details */}
             <h3 className="text-md font-semibold mt-4">{product.name}</h3>
-            <p className="text-gray-600">{product.price}</p>
+            <p className="text-gray-600">{product.price.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}</p>
 
             {/* Add to Cart & Buy Now Buttons */}
             <div className="flex justify-center items-center gap-2 mt-4">
