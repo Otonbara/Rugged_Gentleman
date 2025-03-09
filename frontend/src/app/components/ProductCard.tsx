@@ -1,22 +1,38 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import { FaCartShopping, FaDollarSign } from "react-icons/fa6";
 import { useState } from "react";
+import { useCart } from "../context/CartContext";
+import { useRouter } from "next/navigation";
 
 export default function ProductCard({ product }) {
     const [selectedSize, setSelectedSize] = useState(null);
+    const router = useRouter();
+    const { addToCart } = useCart();
 
     const handleSizeSelect = (size) => {
         setSelectedSize(size);
     };
 
-    const handleBuyNow = (product) => {
+    const handleBuyNow = () => {
         if (!selectedSize) {
             alert("Please select a size before buying!");
             return;
         }
-        console.log(`Buying ${product.name} in size ${selectedSize}`);
+
+        // Navigate to Checkout with selected product details
+        router.push(`/Checkout?name=${encodeURIComponent(product.name)}&price=${product.price}&image=${encodeURIComponent(product.image)}&size=${selectedSize}`);
+    };
+
+    const handleAddToCart = () => {
+        if (!selectedSize) {
+            alert("Please select a size before adding to cart!");
+            return;
+        }
+
+        // Add product to cart with selected size
+        addToCart({ ...product, size: selectedSize });
     };
 
     return (
@@ -36,30 +52,6 @@ export default function ProductCard({ product }) {
             <h3 className="text-md font-semibold mt-4">{product.name}</h3>
             <p className="text-gray-600">{product.price}</p>
 
-            {/* Add to Cart & Buy Now Buttons */}
-            <div className="flex justify-center items-center gap-2 mt-4">
-                <button
-                    className={`flex items-center gap-1 px-3 py-1 rounded-md text-sm transition ${
-                        selectedSize ? "bg-gray-800 text-white hover:bg-gray-600" : "bg-gray-400 text-gray-200 cursor-not-allowed"
-                    }`}
-                    disabled={!selectedSize}
-                >
-                    {selectedSize ? "Add to Cart" : "Select Size"}
-                    <FaCartShopping />
-                </button>
-
-                <button
-                    className={`flex items-center gap-1 px-3 py-1 rounded-md text-sm transition ${
-                        selectedSize ? "bg-green-800 text-white hover:bg-green-600" : "bg-gray-400 text-gray-200 cursor-not-allowed"
-                    }`}
-                    disabled={!selectedSize}
-                    onClick={() => handleBuyNow(product)}
-                >
-                    Buy Now
-                    <FaDollarSign />
-                </button>
-            </div>
-
             {/* Size Selection */}
             <div className="flex justify-center gap-1 mt-4 flex-wrap">
                 {product.size.map((size) => (
@@ -73,6 +65,31 @@ export default function ProductCard({ product }) {
                         {size}
                     </button>
                 ))}
+            </div>
+
+            {/* Add to Cart & Buy Now Buttons */}
+            <div className="flex justify-center items-center gap-2 mt-4">
+                <button
+                    className={`flex items-center gap-1 px-3 py-1 rounded-md text-sm transition ${
+                        selectedSize ? "bg-gray-800 text-white hover:bg-gray-600" : "bg-gray-400 text-gray-200 cursor-not-allowed"
+                    }`}
+                    disabled={!selectedSize}
+                    onClick={handleAddToCart}
+                >
+                    {selectedSize ? "Add to Cart" : "Select Size"}
+                    <FaCartShopping />
+                </button>
+
+                <button
+                    className={`flex items-center gap-1 px-3 py-1 rounded-md text-sm transition ${
+                        selectedSize ? "bg-green-800 text-white hover:bg-green-600" : "bg-gray-400 text-gray-200 cursor-not-allowed"
+                    }`}
+                    disabled={!selectedSize}
+                    onClick={handleBuyNow}
+                >
+                    {selectedSize ? "Buy Now" : "Select Size"}
+                    <FaDollarSign />
+                </button>
             </div>
         </div>
     );

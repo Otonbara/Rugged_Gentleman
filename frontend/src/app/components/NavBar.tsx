@@ -5,14 +5,17 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { FaUser, FaShoppingCart, FaTimes, FaBars } from "react-icons/fa";
-import SearchBar from "./SearchBar";
+import { useCart } from "../context/CartContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname(); // Get current path
+  const { cart } = useCart();
 
   const toggleSidebar = () => setIsOpen(!isOpen);
   const closeSidebar = () => setIsOpen(false);
+
+  const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   const navItems = [
     { name: "HOME", path: "/" },
@@ -21,6 +24,7 @@ export default function Navbar() {
     { name: "FOOTWEARS", path: "/Footwears" },
     { name: "HOODIES & SWEATSHIRTS", path: "/Hoodies_Sweatshirt" },
     { name: "ACCESSORIES", path: "/Accessories" },
+    { name: "CONTACT", path: "/Contact" },
   ];
 
   return (
@@ -51,12 +55,16 @@ export default function Navbar() {
 
         {/* Icons & Hamburger */}
         <div className="flex space-x-4">
-          <SearchBar/>
           <Link href="/Login">
             <FaUser className="text-white" size={24} />
           </Link>
-          <Link href="/Cart">
+          <Link href="/Cart" className="relative">
             <FaShoppingCart className="text-white" size={24} />
+            {cartItemCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                {cartItemCount}
+              </span>
+            )}
           </Link>
 
           {/* Hamburger Menu */}

@@ -3,6 +3,7 @@ import { Anybody, Lato, Satisfy } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/NavBar";
 import Footer from "./components/Footer";
+import { CartProvider } from "./context/CartContext";
 
 const anybody = Anybody({
   variable: "--font-anybody",
@@ -39,9 +40,11 @@ export default function RootLayout({
       <body
         className={`${anybody.variable} ${linksans.variable} ${satisfy.variable} antialiased`}
       >
-        <Navbar />
-        <main className="pt-20">{children}</main>
-        <Footer />
+        <CartProvider>
+          <Navbar />
+          <main className="pt-20 bg-gray-200">{children}</main>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

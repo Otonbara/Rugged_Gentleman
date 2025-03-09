@@ -21,20 +21,32 @@ export default function Footer() {
     { name: "FOOTWEARS", path: "/Footwears" },
     { name: "HOODIES & SWEATSHIRTS", path: "/Hoodies_Sweatshirt" },
     { name: "ACCESSORIES", path: "/Accessories" },
+    { name: "CONTACT", path: "/Contact" },
   ];
 
   return (
     <footer className="bg-zinc-700 text-white py-10">
-      <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center md:text-left">
+      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center md:text-left">
         
-        {/* Logo & Copyright */}
+        {/* Logo & Address */}
         <div className="flex flex-col items-center md:items-start">
           <Image src="/rugged_gentleman_logo.jpg" alt="Logo" width={120} height={40} />
-          <p className="text-sm text-gray-300 mt-2">© {new Date().getFullYear()} All Rights Reserved</p>
+          <p className="text-sm text-gray-300 mt-2">
+            © {new Date().getFullYear()} Rugged Gentleman. All Rights Reserved.
+          </p>
+          <p className="text-sm text-gray-300 mt-4">
+            📍 123 Fashion Street, Lagos, Nigeria
+          </p>
+          <p className="text-sm text-gray-300">
+            📧 Email: <a href="mailto:info@ruggedgentleman.com" className="hover:underline">info@ruggedgentleman.com</a>
+          </p>
+          <p className="text-sm text-gray-300">
+            📞 Phone: <a href="tel:+2341234567890" className="hover:underline">+234 123 456 7890</a>
+          </p>
         </div>
 
-        {/* Navigation Links - Two Columns on Tablet */}
-        <div className="grid grid-cols-2 gap-4 text-sm">
+        {/* Navigation Links */}
+        <div className="grid grid-cols-2 md:grid-cols-1 gap-4 text-sm">
           {navItems.map((item, index) => (
             <Link key={index} href={item.path} className="hover:text-gray-300 transition">
               {item.name}
@@ -64,16 +76,16 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Social Media Icons - Always Centered */}
-      <div className="flex justify-center space-x-4 mt-6">
+      {/* Social Media Icons */}
+      <div className="flex justify-center space-x-6 mt-8">
         <a href="#" aria-label="Facebook" className="hover:text-gray-300 transition">
-          <FaFacebook size={20} />
+          <FaFacebook size={24} />
         </a>
         <a href="#" aria-label="Instagram" className="hover:text-gray-300 transition">
-          <FaInstagram size={20} />
+          <FaInstagram size={24} />
         </a>
         <a href="#" aria-label="Twitter" className="hover:text-gray-300 transition">
-          <FaTwitter size={20} />
+          <FaTwitter size={24} />
         </a>
       </div>
     </footer>
