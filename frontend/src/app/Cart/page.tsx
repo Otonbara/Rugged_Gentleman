@@ -35,7 +35,7 @@ export default function Cart() {
                 <Image src={item.image} alt={item.name} width={80} height={80} className="rounded" />
                 <div>
                   <h2 className="text-lg font-semibold">{item.name}</h2>
-                  <p>Price: {item.price}</p>
+                  <p>Price: {item.price.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}</p>
                   <p>Quantity: {item.quantity}</p>
                 </div>
               </div>
